@@ -1,5 +1,5 @@
 {% set name = "uharfbuzz" %}
-{% set version = "0.30.0" %}
+{% set version = "0.31.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/uharfbuzz-{{ version }}.zip
-  sha256: a2e28cced389d8ddc235234d78e8a0535e2a0b6d452dab5dbc20843b6ef08219
+  sha256: fc5da07133053e5eb2073b04c13dcb2ef992a816f2e04f80036f7e97e275f5da
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 0
   # Compile error on Mac OS X: harfbuzz/src/hb-shape.cc:158:5: - too many arguments provided to function-like macro invocation
   skip: true  # [osx]
 
