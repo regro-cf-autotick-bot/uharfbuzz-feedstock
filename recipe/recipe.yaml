@@ -14,14 +14,14 @@ source:
 build:
   number: 0
   script:
-    - if: unix
-      then:
-        - rm -rf harfbuzz
-        - export USE_SYSTEM_LIBS=1
-    - if: win
-      then:
-        - del harfbuzz /s /q
-        - set USE_SYSTEM_LIBS=1
+    # - if: unix
+    #   then:
+    #     - rm -rf harfbuzz
+    #     - export USE_SYSTEM_LIBS=1
+    # - if: win
+    #   then:
+    #     - del harfbuzz /s /q
+    #     - set USE_SYSTEM_LIBS=1
     # Make sure we can find the harfbuzz-subset package
     # This command makes debugging the setup script much easier
     - pkg-config --exists harfbuzz-subset --debug
