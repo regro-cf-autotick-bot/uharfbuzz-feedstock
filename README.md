@@ -312,4 +312,5 @@ Feedstock Maintainers
 =====================
 
 * [@jan-janssen](https://github.com/jan-janssen/)
+* [@thewchan](https://github.com/thewchan/)
 
