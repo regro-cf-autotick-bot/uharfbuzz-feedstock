@@ -14,6 +14,7 @@ source:
 build:
   number: 0
   script:
+    # Uncomment code below if we want to use the syslibs and to make sure we can find the harfbuzz-subset package
     # - if: unix
     #   then:
     #     - rm -rf harfbuzz
@@ -22,7 +23,6 @@ build:
     #   then:
     #     - del harfbuzz /s /q
     #     - set USE_SYSTEM_LIBS=1
-    # Make sure we can find the harfbuzz-subset package
     # This command makes debugging the setup script much easier
     - pkg-config --exists harfbuzz-subset --debug
     - ${{ PYTHON }} -m pip install . -vv
@@ -42,10 +42,10 @@ requirements:
   host:
     - pip
     - python
-    - setuptools-scm
-    - cython
+    - setuptools-scm >=2.1
+    - cython >=3.1
     - pkgconfig
-    - setuptools
+    - setuptools >=36.4
     - harfbuzz
     # The following dependencies are needed for harfbuzz->freetype detection on windows
     - zlib
