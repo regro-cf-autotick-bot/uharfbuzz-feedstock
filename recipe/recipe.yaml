@@ -12,31 +12,27 @@ source:
   sha256: a0a6928ed66b166a931ebe5df9ac551b9c42983513030233dcd95b41fa827f97
 
 build:
-  number: 1
+  number: 2
   script:
     - if: unix
-      then: rm -rf harfbuzz
-    - if: unix
-      then: export USE_SYSTEM_LIBS=1
+      then:
+        - rm -rf harfbuzz
+        - export USE_SYSTEM_LIBS=1
     - if: win
-      then: del harfbuzz /s /q
-    - if: win
-      then: set USE_SYSTEM_LIBS=1
-    # Make sure we can find the harfbuzz-subset package
-    # This command makes debugging the setup script much easier
+      then:
+        - del harfbuzz /s /q
+        - set USE_SYSTEM_LIBS=1
     - pkg-config --exists harfbuzz-subset --debug
     - ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - if: build_platform != target_platform
-      then: python
-    - if: build_platform != target_platform
-      then: cross-python_${{ target_platform }}
-    - if: build_platform != target_platform
-      then: cython
-    - if: build_platform != target_platform
-      then: pkgconfig
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - cython
+        - pkgconfig
     - pkg-config
     - ${{ compiler('cxx') }}
     - ${{ compiler('c') }}
